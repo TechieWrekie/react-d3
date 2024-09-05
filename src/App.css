@@ -1,0 +1,95 @@
+.title {
+    font-size: 28px;
+    font-weight: bold;
+    position: relative;
+    width: 250px;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 0 auto;
+    background-color: white;
+}
+
+@property --angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+
+.title::after,
+.title::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    padding: 5px;
+    border-radius: 10px;
+    background: conic-gradient(from var(--angle), transparent 50%, #f64f59, #12c2e9);
+    z-index: -1;
+    animation: 4s spin linear infinite;
+}
+
+.title::after {
+    filter: blur(1.5rem);
+    opacity: 0.5;
+}
+
+@keyframes spin {
+    from {
+        --angle: 0deg
+    }
+
+    to {
+        --angle: 360deg
+    }
+}
+
+.tree-container {
+    display: flex;
+    width: 100%;
+    margin: 10px;
+    height: calc(100vh - 100px);
+    background-image: url('../src//assets/tree-bg.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.box {
+    display: grid;
+    grid-template-columns: 0fr auto 1fr;
+    column-gap: 8px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    padding: 16px;
+}
+
+.name {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #323232;
+}
+
+.role {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.4);
+}
+
+.info {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.8);
+    margin: 4px 0px;
+}
+
+.profileInfo {
+    text-align: left;
+}
